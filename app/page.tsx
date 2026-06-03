@@ -72,11 +72,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Industrial Orange */}
+      {/* Hero Section */}
       <section className="min-h-[70vh] flex items-center justify-center px-4 relative overflow-hidden py-12 bg-white">
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            {/* Industrial Badge */}
             <div className="inline-block mb-4 px-4 py-1 border-l-4 border-r-4 border-orange-500 text-orange-600 text-sm font-mono tracking-wider">
               &lt; PORTFOLIO /&gt;
             </div>
@@ -112,7 +111,6 @@ export default function Home() {
               </a>
             </div>
             
-            {/* Social Links */}
             <div className="flex justify-center gap-6">
               <a href="https://github.com/jdmontil2024" target="_blank" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -140,7 +138,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section - Darker Gray for Contrast */}
+      {/* Skills Section */}
       <section id="skills" className="py-16 bg-gray-100">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-10">
@@ -189,7 +187,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section - Medium Gray for Contrast */}
+      {/* Projects Section */}
       <section id="projects" className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-10">
@@ -214,17 +212,6 @@ export default function Home() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = `
-                        <div class="w-full h-full bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center">
-                          <div class="text-center">
-                            <div class="text-4xl mb-1">${project.title === "ID Photo Editor" ? "📸" : project.title === "Church Attendance System" ? "⛪" : project.title === "Loan Manager App" ? "💰" : project.title === "Property Management System" ? "🏢" : "⚡"}</div>
-                            <p class="text-white font-semibold text-xs">Project Preview</p>
-                          </div>
-                        </div>
-                      `;
-                    }}
                   />
                 </div>
                 <div className="p-5">
@@ -247,7 +234,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section - Darkest Gray for Contrast */}
+      {/* Contact Section */}
       <section id="contact" className="py-16 bg-gray-200">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="inline-block w-12 h-0.5 bg-orange-500 mb-4"></div>
