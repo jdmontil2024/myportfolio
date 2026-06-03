@@ -93,7 +93,7 @@ export default function Home() {
     {
       title: "Energy Analytics",
       description: "IoT-based energy monitoring platform with real-time analytics and consumption tracking.",
-      image: "https://images.pexels.com/photos/3862631/energy-tracking-pexels-3862631.jpeg?w=600&h=400&fit=crop",
+      image: "/images/energy.jpg",
       technologies: ["Laravel", "PostgreSQL", "WebSockets"],
       link: "#"
     }
