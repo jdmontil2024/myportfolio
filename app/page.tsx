@@ -43,35 +43,35 @@ export default function Home() {
     {
       title: "ID Photo Editor",
       description: "Professional ID photo editor with GCash integration. Crop, resize, and edit ID photos instantly.",
-      image: "https://images.pexels.com/photos/1181677/photo-editor-pexels-1181677.jpeg?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=400&fit=crop",
       technologies: ["Next.js", "Supabase", "PayMongo"],
       link: "https://nextjs-subscription-payments-inky-eight.vercel.app"
     },
     {
       title: "Church Attendance",
       description: "Church management system for tracking attendance, managing members, and generating reports.",
-      image: "https://images.pexels.com/photos/248130/pexels-photo-248130.jpeg?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1438032945731-77f33e9f8c1f?w=600&h=400&fit=crop",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
     {
       title: "Loan Manager",
       description: "Comprehensive loan management system for tracking loan applications, payments, and borrower profiles.",
-      image: "https://images.pexels.com/photos/53621/calculator-calculation-insurance-finance-53621.jpeg?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
     {
       title: "Property Management",
       description: "Complete property management solution for real estate agencies. Manage properties, tenants, and leases.",
-      image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffc?w=600&h=400&fit=crop",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
     {
       title: "Energy Analytics",
       description: "IoT-based energy monitoring platform with real-time analytics and consumption tracking.",
-      image: "https://images.pexels.com/photos/3862631/energy-tracking-pexels-3862631.jpeg?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&h=400&fit=crop",
       technologies: ["Laravel", "PostgreSQL", "WebSockets"],
       link: "#"
     }
@@ -88,7 +88,7 @@ export default function Home() {
               &lt; PORTFOLIO /&gt;
             </div>
             
-            {/* Name - Responsive Font Size */}
+            {/* Name */}
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 md:mb-4 text-gray-900 px-2">
               Jennifer Montil
             </h1>
@@ -107,7 +107,7 @@ export default function Home() {
               Philippines
             </p>
             
-            {/* Buttons - Stack on mobile */}
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-3 mb-6 md:mb-8 px-4">
               <a href="#projects" className="px-4 md:px-6 py-2 text-sm bg-orange-500 text-white font-semibold rounded-md hover:bg-orange-600 transition-all text-center">
                 View My Work
@@ -138,7 +138,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator - Hidden on mobile */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
           <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -146,7 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section - Mobile Optimized */}
+      {/* Skills Section */}
       <section id="skills" className="py-10 md:py-16 bg-gray-100">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-6 md:mb-10">
@@ -178,7 +177,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section - Mobile Optimized */}
+      {/* Projects Section - With Fixed Images */}
       <section id="projects" className="py-10 md:py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-6 md:mb-10">
@@ -191,8 +190,40 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {projects.map((project, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-200">
-                <div className="h-36 md:h-44 relative overflow-hidden bg-gray-100">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+                <div className="h-36 md:h-44 relative overflow-hidden bg-gradient-to-r from-orange-400 to-orange-600">
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        const parent = e.target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `
+                            <div class="w-full h-full bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center">
+                              <div class="text-center">
+                                <div class="text-4xl mb-1">${project.title === "ID Photo Editor" ? "📸" : project.title === "Church Attendance" ? "⛪" : project.title === "Loan Manager" ? "💰" : project.title === "Property Management" ? "🏢" : "⚡"}</div>
+                                <p class="text-white font-semibold text-xs">${project.title}</p>
+                              </div>
+                            </div>
+                          `;
+                        }
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-4xl mb-1">
+                          {project.title === "ID Photo Editor" ? "📸" : 
+                           project.title === "Church Attendance" ? "⛪" : 
+                           project.title === "Loan Manager" ? "💰" : 
+                           project.title === "Property Management" ? "🏢" : "⚡"}
+                        </div>
+                        <p className="text-white font-semibold text-xs">{project.title}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="p-4 md:p-5">
                   <h3 className="text-base md:text-lg font-bold mb-1 md:mb-2 text-gray-900">{project.title}</h3>
@@ -212,7 +243,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section - Mobile Optimized */}
+      {/* Contact Section */}
       <section id="contact" className="py-10 md:py-16 bg-gray-200">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="inline-block w-8 md:w-12 h-0.5 bg-orange-500 mb-3 md:mb-4"></div>
@@ -225,7 +256,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer - Mobile Optimized */}
+      {/* Footer */}
       <footer className="py-4 md:py-6 text-center text-gray-500 bg-white border-t border-gray-200 text-xs md:text-sm">
         <p>© 2024 Jennifer Montil — Crafting digital experiences</p>
         <p className="text-[10px] md:text-xs mt-1">Available for freelance & full-time opportunities</p>
