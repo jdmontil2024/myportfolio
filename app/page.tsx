@@ -16,6 +16,28 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const img = e.currentTarget;
+    const parent = img.parentElement;
+    if (parent) {
+      const projectTitle = img.alt;
+      let emoji = '📸';
+      if (projectTitle.includes('Church')) emoji = '⛪';
+      else if (projectTitle.includes('Loan')) emoji = '💰';
+      else if (projectTitle.includes('Property')) emoji = '🏢';
+      else if (projectTitle.includes('Energy')) emoji = '⚡';
+      
+      parent.innerHTML = `
+        <div class="w-full h-full bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-4xl mb-1">${emoji}</div>
+            <p class="text-white font-semibold text-xs">${projectTitle}</p>
+          </div>
+        </div>
+      `;
+    }
+  };
+
   const skillCategories = [
     {
       name: "Frontend",
@@ -79,26 +101,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Mobile Optimized */}
+      {/* Hero Section */}
       <section className="min-h-[60vh] md:min-h-[70vh] flex items-center justify-center px-4 md:px-6 py-8 md:py-12 bg-white">
         <div className="max-w-6xl mx-auto text-center">
           <div className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            {/* Badge */}
             <div className="inline-block mb-3 md:mb-4 px-3 md:px-4 py-0.5 md:py-1 border-l-4 border-r-4 border-orange-500 text-orange-600 text-xs md:text-sm font-mono tracking-wider">
               &lt; PORTFOLIO /&gt;
             </div>
             
-            {/* Name */}
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 md:mb-4 text-gray-900 px-2">
               Jennifer Montil
             </h1>
             
-            {/* Title */}
             <div className="text-base md:text-xl text-orange-500 mb-3 md:mb-4 font-mono px-2">
               <span>Full Stack Developer</span>
             </div>
             
-            {/* Location */}
             <p className="text-gray-600 mb-4 md:mb-6 flex items-center justify-center gap-2 text-xs md:text-sm">
               <svg className="w-3 h-3 md:w-4 md:h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -107,7 +125,6 @@ export default function Home() {
               Philippines
             </p>
             
-            {/* Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-3 mb-6 md:mb-8 px-4">
               <a href="#projects" className="px-4 md:px-6 py-2 text-sm bg-orange-500 text-white font-semibold rounded-md hover:bg-orange-600 transition-all text-center">
                 View My Work
@@ -117,7 +134,6 @@ export default function Home() {
               </a>
             </div>
             
-            {/* Social Links */}
             <div className="flex justify-center gap-4 md:gap-6">
               <a href="https://github.com/jdmontil2024" target="_blank" className="text-gray-400 hover:text-orange-500 transition-colors">
                 <svg className="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -177,7 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section - With Fixed Images */}
+      {/* Projects Section */}
       <section id="projects" className="py-10 md:py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-6 md:mb-10">
@@ -191,39 +207,12 @@ export default function Home() {
             {projects.map((project, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-200">
                 <div className="h-36 md:h-44 relative overflow-hidden bg-gradient-to-r from-orange-400 to-orange-600">
-                  {project.image ? (
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        const parent = e.target.parentElement;
-                        if (parent) {
-                          parent.innerHTML = `
-                            <div class="w-full h-full bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center">
-                              <div class="text-center">
-                                <div class="text-4xl mb-1">${project.title === "ID Photo Editor" ? "📸" : project.title === "Church Attendance" ? "⛪" : project.title === "Loan Manager" ? "💰" : project.title === "Property Management" ? "🏢" : "⚡"}</div>
-                                <p class="text-white font-semibold text-xs">${project.title}</p>
-                              </div>
-                            </div>
-                          `;
-                        }
-                      }}
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-4xl mb-1">
-                          {project.title === "ID Photo Editor" ? "📸" : 
-                           project.title === "Church Attendance" ? "⛪" : 
-                           project.title === "Loan Manager" ? "💰" : 
-                           project.title === "Property Management" ? "🏢" : "⚡"}
-                        </div>
-                        <p className="text-white font-semibold text-xs">{project.title}</p>
-                      </div>
-                    </div>
-                  )}
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    onError={handleImageError}
+                  />
                 </div>
                 <div className="p-4 md:p-5">
                   <h3 className="text-base md:text-lg font-bold mb-1 md:mb-2 text-gray-900">{project.title}</h3>
