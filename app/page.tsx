@@ -72,7 +72,7 @@ export default function Home() {
     {
       title: "Church Attendance",
       description: "Church management system for tracking attendance, managing members, and generating reports.",
-      image: "https://images.pexels.com/photos/2606543/pexels-photo-2606543.jpeg?w=600&h=400&fit=crop",
+      image: "https://www.pexels.com/photo/cathedral-in-erfurt-at-night-19292907/",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
