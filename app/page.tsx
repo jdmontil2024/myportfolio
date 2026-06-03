@@ -65,35 +65,35 @@ export default function Home() {
     {
       title: "ID Photo Editor",
       description: "Professional ID photo editor with GCash integration. Crop, resize, and edit ID photos instantly.",
-      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/1181677/photo-editor-pexels-1181677.jpeg?w=600&h=400&fit=crop",
       technologies: ["Next.js", "Supabase", "PayMongo"],
       link: "https://nextjs-subscription-payments-inky-eight.vercel.app"
     },
     {
       title: "Church Attendance",
       description: "Church management system for tracking attendance, managing members, and generating reports.",
-      image: "https://images.unsplash.com/photo-1438032945731-77f33e9f8c1f?w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/2606543/pexels-photo-2606543.jpeg?w=600&h=400&fit=crop",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
     {
       title: "Loan Manager",
       description: "Comprehensive loan management system for tracking loan applications, payments, and borrower profiles.",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/53621/calculator-calculation-insurance-finance-53621.jpeg?w=600&h=400&fit=crop",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
     {
       title: "Property Management",
       description: "Complete property management solution for real estate agencies. Manage properties, tenants, and leases.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffc?w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?w=600&h=400&fit=crop",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
     {
       title: "Energy Analytics",
       description: "IoT-based energy monitoring platform with real-time analytics and consumption tracking.",
-      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/3862631/energy-tracking-pexels-3862631.jpeg?w=600&h=400&fit=crop",
       technologies: ["Laravel", "PostgreSQL", "WebSockets"],
       link: "#"
     }
@@ -193,7 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects Section - Fixed Images */}
       <section id="projects" className="py-10 md:py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-6 md:mb-10">
@@ -206,7 +206,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {projects.map((project, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-200">
-                <div className="h-36 md:h-44 relative overflow-hidden bg-gradient-to-r from-orange-400 to-orange-600">
+                <div className="h-36 md:h-44 relative overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title} 
@@ -218,7 +218,7 @@ export default function Home() {
                   <h3 className="text-base md:text-lg font-bold mb-1 md:mb-2 text-gray-900">{project.title}</h3>
                   <p className="text-gray-600 text-xs md:text-sm mb-2 md:mb-3 line-clamp-2">{project.description}</p>
                   <div className="flex gap-1.5 md:gap-2 flex-wrap mb-2 md:mb-3">
-                    {project.technologies.slice(0, 3).map((tech, i) => (
+                    {project.technologies.map((tech, i) => (
                       <span key={i} className="px-1.5 md:px-2 py-0.5 md:py-1 bg-gray-100 text-gray-600 text-[10px] md:text-xs rounded-md">{tech}</span>
                     ))}
                   </div>
