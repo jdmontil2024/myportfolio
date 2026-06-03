@@ -65,28 +65,28 @@ export default function Home() {
     {
       title: "ID Photo Editor",
       description: "Professional ID photo editor with GCash integration. Crop, resize, and edit ID photos instantly.",
-      image: "https://images.pexels.com/photos/1181677/photo-editor-pexels-1181677.jpeg?w=600&h=400&fit=crop",
+      image: "/images/photo-editor.jpg",
       technologies: ["Next.js", "Supabase", "PayMongo"],
       link: "https://nextjs-subscription-payments-inky-eight.vercel.app"
     },
     {
       title: "Church Attendance",
       description: "Church management system for tracking attendance, managing members, and generating reports.",
-      image: "https://www.pexels.com/photo/cathedral-in-erfurt-at-night-19292907/",
+      image: "/images/church.jpg",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
     {
       title: "Loan Manager",
       description: "Comprehensive loan management system for tracking loan applications, payments, and borrower profiles.",
-      image: "https://images.pexels.com/photos/53621/calculator-calculation-insurance-finance-53621.jpeg?w=600&h=400&fit=crop",
+      image: "/images/loan.jpg",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
     {
       title: "Property Management",
       description: "Complete property management solution for real estate agencies. Manage properties, tenants, and leases.",
-      image: "https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?w=600&h=400&fit=crop",
+      image: "/images/property.jpg",
       technologies: ["Laravel", "PostgreSQL", "Docker"],
       link: "#"
     },
