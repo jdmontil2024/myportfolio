@@ -65,7 +65,7 @@ export default function Home() {
     {
       title: "ID Photo Editor",
       description: "Professional ID photo editor with GCash integration. Crop, resize, and edit ID photos instantly.",
-      image: "/images/photo-editor.jpg",
+      image: "/images/photo.jpg",
       technologies: ["Next.js", "Supabase", "PayMongo"],
       link: "https://nextjs-subscription-payments-inky-eight.vercel.app"
     },
